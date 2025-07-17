@@ -26,7 +26,7 @@ export const WeatherApp = () => {
 
   useEffect(() => {
     dispatch(weatherThunk(selectedLocation));
-  }, [dispatch, selectedLocation]);
+  }, []);
 
   return (
     <div className={`${styles.container} ${backgroundClass}`}>
