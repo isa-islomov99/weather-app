@@ -62,7 +62,7 @@ export const getWeatherBackground = (condition: string): string => {
   return conditionMap[condition] || conditionMap["default"];
 };
 
-// Background images based on weather (using the uploaded image as reference)
+// Background images based on weather
 export const getBackgroundImage = (condition: string): string | null => {
   const imageMap: { [key: string]: string | null } = {
     clear:
