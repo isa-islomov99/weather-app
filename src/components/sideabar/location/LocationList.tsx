@@ -8,7 +8,6 @@ import styles from "../Sidebar.module.css";
 
 export interface Location {
   name: string;
-  nameUz: string;
 }
 
 interface LocationListProps {
@@ -35,9 +34,6 @@ export const LocationList = memo(
               onClick={() => onLocationClick(location.name)}
             >
               <span>{location.name}</span>
-              {location.nameUz !== location.name && (
-                <span className={styles.locationNameUz}>{location.nameUz}</span>
-              )}
             </Button>
           </li>
         ))}

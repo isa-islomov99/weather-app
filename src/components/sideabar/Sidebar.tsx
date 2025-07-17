@@ -60,7 +60,7 @@ export const Sidebar = () => {
   const currentLocations = useMemo(() => {
     return activeTab === "uzbekistan"
       ? [...uzbekistanRegions]
-      : popularCities.map((city) => ({ name: city, nameUz: city }));
+      : popularCities.map((city) => ({ name: city }));
   }, [activeTab]);
 
   return (
