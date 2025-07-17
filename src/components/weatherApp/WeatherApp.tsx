@@ -6,7 +6,7 @@ import { MainContent } from "./MainContent";
 import { Sidebar } from "../sideabar/Sidebar";
 
 // thunk
-import { weatherThunk } from "@/shared/model/store/thunks/weatherThunks";
+import { weatherThunk } from "@/shared/model/thunks/weatherThunk";
 
 // hook
 import { useWeatherApp } from "@/hooks/useWeatherApp";

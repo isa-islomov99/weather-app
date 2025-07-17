@@ -11,10 +11,10 @@ import { WeatherDetails } from "./WeatherDetails";
 import {
   setSearchQuery,
   setSelectedLocation,
-} from "@/shared/model/store/slices/weatherSlice";
+} from "@/shared/model/slices/weatherSlice";
 
 // thunk
-import { weatherThunk } from "@/shared/model/store/thunks/weatherThunks";
+import { weatherThunk } from "@/shared/model/thunks/weatherThunk";
 
 // consts
 import { uzbekistanRegions, popularCities } from "@/shared/lib/consts/regions";

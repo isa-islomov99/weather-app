@@ -1,10 +1,10 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 // thunk
-import { weatherThunk } from "../thunks/weatherThunks";
+import { weatherThunk } from "../thunks/weatherThunk";
 
 // type
-import type { WeatherState } from "../../types/storeTypes";
+import type { WeatherState } from "../types/storeTypes";
 
 const initialState: WeatherState = {
   currentWeather: null,
