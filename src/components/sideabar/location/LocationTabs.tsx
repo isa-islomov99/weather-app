@@ -1,12 +1,13 @@
 import { memo } from "react";
-
-// component
 import { Button } from "@/shared/ui/button/Button";
-
-// style
 import styles from "../Sidebar.module.css";
 
-type TabType = "uzbekistan" | "popular";
+export type TabType = "uzbekistan" | "popular";
+
+const TABS: { key: TabType; label: string }[] = [
+  { key: "uzbekistan", label: "Uzbekistan Regions" },
+  { key: "popular", label: "Popular Cities" },
+];
 
 interface LocationTabsProps {
   activeTab: TabType;
@@ -14,26 +15,22 @@ interface LocationTabsProps {
 }
 
 export const LocationTabs = memo(
-  ({ activeTab, onTabChange }: LocationTabsProps) => {
-    return (
-      <div className={styles.tabsWrapper}>
+  ({ activeTab, onTabChange }: LocationTabsProps) => (
+    <div className={styles.tabsWrapper} role="tablist">
+      {TABS.map(({ key, label }) => (
         <Button
-          onClick={() => onTabChange("uzbekistan")}
-          className={`${styles.locationItem} ${styles.tabButton} ${
-            activeTab === "uzbekistan" ? styles.active : styles.inactive
-          }`}
+          key={key}
+          onClick={() => onTabChange(key)}
+          className={[
+            styles.locationItem,
+            styles.tabButton,
+            activeTab === key ? styles.active : styles.inactive,
+          ].join(" ")}
+          role="tab"
         >
-          Uzbekistan Regions
+          {label}
         </Button>
-        <Button
-          onClick={() => onTabChange("popular")}
-          className={`${styles.locationItem} ${styles.tabButton} ${
-            activeTab === "popular" ? styles.active : styles.inactive
-          }`}
-        >
-          Popular Cities
-        </Button>
-      </div>
-    );
-  }
+      ))}
+    </div>
+  )
 );

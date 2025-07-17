@@ -18,6 +18,11 @@ interface LocationListProps {
 
 export const LocationList = memo(
   ({ locations, selectedLocation, onLocationClick }: LocationListProps) => {
+    const handleLocationClick = (name: string) => {
+      // to prevent re-sending request when the same location is clicked
+      if (selectedLocation !== name) onLocationClick(name);
+    };
+
     return (
       <ul className={styles.locationList} role="listbox" aria-label="Locations">
         {locations.map((location) => (
@@ -31,7 +36,7 @@ export const LocationList = memo(
                 selectedLocation === location.name ? styles.active : ""
               }`}
               tabIndex={0}
-              onClick={() => onLocationClick(location.name)}
+              onClick={() => handleLocationClick(location.name)}
             >
               <span>{location.name}</span>
             </Button>
