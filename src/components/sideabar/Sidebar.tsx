@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
@@ -17,10 +17,7 @@ import {
 import { weatherThunk } from "@/shared/model/store/thunks/weatherThunks";
 
 // consts
-import {
-  uzbekistanRegions,
-  popularCities,
-} from "@/shared/lib/consts/uzRegions";
+import { uzbekistanRegions, popularCities } from "@/shared/lib/consts/regions";
 
 // types
 import type { RootState, AppDispatch } from "@/shared/model/store/store";
@@ -32,9 +29,8 @@ type TabType = "uzbekistan" | "popular";
 
 export const Sidebar = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { currentWeather, searchQuery, selectedLocation } = useSelector(
-    (state: RootState) => state.weather
-  );
+  const { currentWeather, searchQuery, selectedLocation, error, isLoading } =
+    useSelector((state: RootState) => state.weather);
   const [activeTab, setActiveTab] = useState<TabType>("uzbekistan");
 
   const handleSearch = (e: React.FormEvent) => {
@@ -45,18 +41,21 @@ export const Sidebar = () => {
     }
   };
 
-  const handleLocationClick = (locationName: string) => {
-    dispatch(setSelectedLocation(locationName));
-    dispatch(weatherThunk(locationName));
-  };
+  const handleLocationClick = useCallback(
+    (locationName: string) => {
+      dispatch(setSelectedLocation(locationName));
+      dispatch(weatherThunk(locationName));
+    },
+    [dispatch]
+  );
 
   const handleQueryChange = (value: string) => {
     dispatch(setSearchQuery(value));
   };
 
-  const handleTabChange = (tab: TabType) => {
+  const handleTabChange = useCallback((tab: TabType) => {
     setActiveTab(tab);
-  };
+  }, []);
 
   const currentLocations = useMemo(() => {
     return activeTab === "uzbekistan"
@@ -84,7 +83,14 @@ export const Sidebar = () => {
       </div>
 
       {/* Weather Details */}
-      <WeatherDetails currentWeather={currentWeather} />
+      <div className={styles.weatherDetails}>
+        <h3 className={styles.sectionTitle}>Weather Details</h3>
+        <WeatherDetails
+          currentWeather={currentWeather}
+          error={error}
+          isLoading={isLoading}
+        />
+      </div>
     </div>
   );
 };

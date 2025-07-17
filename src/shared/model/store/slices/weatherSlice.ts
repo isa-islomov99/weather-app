@@ -42,6 +42,7 @@ const weatherSlice = createSlice({
       .addCase(weatherThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
+        state.currentWeather = null;
       });
   },
 });

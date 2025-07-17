@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./Sidebar.module.css";
 
 interface WeatherDetailsProps {
@@ -7,14 +8,18 @@ interface WeatherDetailsProps {
     windspeed: number;
     winddirection: number;
   } | null;
+  error: string | null;
+  isLoading: boolean;
 }
 
-export const WeatherDetails = ({ currentWeather }: WeatherDetailsProps) => {
-  if (!currentWeather) return null;
+export const WeatherDetails = memo(
+  ({ currentWeather, error, isLoading }: WeatherDetailsProps) => {
+    if (isLoading) return <span className={styles.loading}>Loading...</span>;
 
-  return (
-    <div className={styles.weatherDetails}>
-      <h3 className={styles.sectionTitle}>Weather Details</h3>
+    if (!currentWeather || error)
+      return <span className={styles.errorMessage}>{error}</span>;
+
+    return (
       <div className={styles.detailsGrid}>
         <div className={styles.detailItem}>
           <div className={styles.detailLabel}>Temperature</div>
@@ -45,6 +50,6 @@ export const WeatherDetails = ({ currentWeather }: WeatherDetailsProps) => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);

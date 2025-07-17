@@ -1,6 +1,12 @@
+import { memo } from "react";
+
+// component
+import { Button } from "@/shared/ui/button/Button";
+
+// style
 import styles from "../Sidebar.module.css";
 
-interface Location {
+export interface Location {
   name: string;
   nameUz: string;
 }
@@ -11,25 +17,31 @@ interface LocationListProps {
   onLocationClick: (locationName: string) => void;
 }
 
-export const LocationList = ({
-  locations,
-  selectedLocation,
-  onLocationClick,
-}: LocationListProps) => (
-  <div className={styles.locationList}>
-    {locations.map((location) => (
-      <div
-        key={location.name}
-        className={`${styles.locationItem} ${
-          selectedLocation === location.name ? styles.active : ""
-        }`}
-        onClick={() => onLocationClick(location.name)}
-      >
-        <div>{location.name}</div>
-        {location.nameUz !== location.name && (
-          <div className={styles.locationNameUz}>{location.nameUz}</div>
-        )}
-      </div>
-    ))}
-  </div>
+export const LocationList = memo(
+  ({ locations, selectedLocation, onLocationClick }: LocationListProps) => {
+    return (
+      <ul className={styles.locationList} role="listbox" aria-label="Locations">
+        {locations.map((location) => (
+          <li
+            key={location.name}
+            role="option"
+            aria-selected={selectedLocation === location.name}
+          >
+            <Button
+              className={`${styles.locationItem} ${
+                selectedLocation === location.name ? styles.active : ""
+              }`}
+              tabIndex={0}
+              onClick={() => onLocationClick(location.name)}
+            >
+              <span>{location.name}</span>
+              {location.nameUz !== location.name && (
+                <span className={styles.locationNameUz}>{location.nameUz}</span>
+              )}
+            </Button>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 );

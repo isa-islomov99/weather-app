@@ -1,7 +1,8 @@
 import React from "react";
 
-// component
+// components
 import { Search } from "lucide-react";
+import { Button } from "@/shared/ui/button/Button";
 
 // style
 import styles from "./Sidebar.module.css";
@@ -27,9 +28,9 @@ export const SidebarSearch = ({
           onChange={(e) => onQueryChange(e.target.value)}
           className={styles.searchInput}
         />
-        <button type="submit" className={styles.searchButton}>
+        <Button type="submit" className={styles.searchButton}>
           <Search size={18} />
-        </button>
+        </Button>
       </div>
     </form>
   </div>
