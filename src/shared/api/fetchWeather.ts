@@ -1,6 +1,12 @@
 import { getCoordinates } from "./getCoordinates";
+import type {
+  Coordinates,
+  WeatherApiResponse,
+} from "@/shared/model/types/storeTypes";
 
-export async function fetchWeatherData(location: string) {
+export async function fetchWeatherData(
+  location: string
+): Promise<{ coords: Coordinates; weatherData: WeatherApiResponse }> {
   const coords = await getCoordinates(location);
 
   const response = await fetch(
@@ -8,7 +14,7 @@ export async function fetchWeatherData(location: string) {
   );
 
   if (!response.ok) throw new Error("Weather data not found");
-  const weatherData = await response.json();
+  const weatherData: WeatherApiResponse = await response.json();
 
   return { coords, weatherData };
 }
