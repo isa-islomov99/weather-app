@@ -5,7 +5,7 @@ export const WeatherError = ({ error }: { error: string | null }) => {
   return (
     <div className={styles.error}>
       <p>Error: {error}</p>
-      <p>Please check your API key or try a different location.</p>
+      <p>Please try a different location.</p>
     </div>
   );
 };
