@@ -20,7 +20,7 @@ import { weatherThunk } from "@/shared/model/store/thunks/weatherThunks";
 import { uzbekistanRegions, popularCities } from "@/shared/lib/consts/regions";
 
 // types
-import type { RootState, AppDispatch } from "@/shared/model/store/store";
+import type { RootState, AppDispatch } from "@/app/providers/storeProvider";
 
 // style
 import styles from "./Sidebar.module.css";

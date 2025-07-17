@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import weatherReducer from "./slices/weatherSlice";
+import weatherReducer from '@/shared/model/store/slices/weatherSlice';
 
 const persistConfig = {
   key: "root",

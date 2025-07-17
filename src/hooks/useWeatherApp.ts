@@ -8,7 +8,7 @@ import {
 } from "@/shared/lib/utils/weatherUtils";
 
 // type
-import type { RootState } from "@/shared/model/store/store";
+import type { RootState } from "@/app/providers/storeProvider";
 
 export const useWeatherApp = () => {
   const currentWeather = useSelector(

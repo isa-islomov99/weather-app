@@ -14,7 +14,7 @@ import {
 } from "@/shared/lib/utils/weatherUtils";
 
 // type
-import type { RootState } from "@/shared/model/store/store";
+import type { RootState } from "@/app/providers/storeProvider";
 
 // style
 import styles from "./WeahterApp.module.css";

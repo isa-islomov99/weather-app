@@ -12,7 +12,7 @@ import { weatherThunk } from "@/shared/model/store/thunks/weatherThunks";
 import { useWeatherApp } from "@/hooks/useWeatherApp";
 
 // types
-import type { RootState, AppDispatch } from "@/shared/model/store/store";
+import type { RootState, AppDispatch } from "@/app/providers/storeProvider";
 
 // style
 import styles from "./WeahterApp.module.css";
