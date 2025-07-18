@@ -34,7 +34,7 @@ export const WeatherApp = () => {
         <img
           src={backgroundImage}
           alt="Weather background"
-          className={`${styles.backgroundImage} animate-float`}
+          className={styles.backgroundImage}
         />
       )}
 

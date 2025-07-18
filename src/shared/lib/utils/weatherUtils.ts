@@ -64,22 +64,21 @@ export const getWeatherBackground = (condition: string): string => {
 
 // Background images based on weather
 export const getBackgroundImage = (condition: string): string | null => {
+  // Following approach is not better approach for user-facing or production apps: It’s usually better to convert
+  // to webp format and compress the images for better performance
   const imageMap: { [key: string]: string | null } = {
-    clear:
-      "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80",
-    sunny:
-      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80",
-    clouds: null, // Could add cloudy sky images
-    cloudy: null,
-    rain: null, // Could add rainy weather images
-    drizzle: null,
-    thunderstorm: null,
-    snow: null, // Could add snowy images
+    clear: "/images/clear.jpeg",
+    sunny: "/images/sunny.jpeg",
+    clouds: "/images/clouds.jpeg",
+    cloudy: "/images/cloudy.jpeg",
+    rain: "/images/rain.jpeg",
+    drizzle: "/images/rain.jpeg",
+    thunderstorm: "/images/rain.jpeg",
+    snow: "/images/snow.jpeg",
     mist: null,
     fog: null,
     haze: null,
-    default:
-      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80",
+    default: "/images/default.jpeg",
   };
 
   return imageMap[condition] || imageMap["default"];

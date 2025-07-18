@@ -79,14 +79,6 @@
     }
   }
   
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
   
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out;
@@ -96,9 +88,6 @@
     animation: slideIn 0.3s ease-out;
   }
   
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
   
   /* Responsive utilities */
   @media (max-width: 768px) {
